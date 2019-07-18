@@ -1,0 +1,13 @@
+---
+- hosts: master15
+#  vars:
+  remote_user: root
+  tasks:
+  - name: ensure nginx is stopped
+    service: name=nginx state=stopped
+  - name: ensure firewalld is stopped
+    service: name=firewalld state=stopped
+  - name: remove nginx package
+    yum: name=nginx state=absent
+  - name: remove epel-release package
+    yum: name=epel-release state=absent

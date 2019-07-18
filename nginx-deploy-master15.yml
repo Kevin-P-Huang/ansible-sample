@@ -1,4 +1,4 @@
-- hosts: all
+- hosts: master15
   remote_user: root
   tasks:
   - name: install epel-release package

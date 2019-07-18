@@ -1,0 +1,16 @@
+- hosts: all
+  remote_user: root
+  tasks:
+  - name: install epel-release package
+    yum: name=epel-release state=present
+  - name: install nginx package
+    yum: name=nginx state=present
+  - name: ensure firewalld is running
+    service: name=firewalld state=started
+  - name: allow HTTP and HTTPS traffic
+    shell: |
+      firewall-cmd --permanent --zone=public --add-service=http
+      firewall-cmd --permanent --zone=public --add-service=https
+      firewall-cmd --reload
+  - name: ensure nginx is running
+    service: name=nginx state=started enabled=yes

@@ -1,0 +1,8 @@
+---
+#- hosts: node14
+- hosts: all
+#  vars:
+  remote_user: root
+  tasks:
+  - name: telnet
+    yum: name=telnet state=present
